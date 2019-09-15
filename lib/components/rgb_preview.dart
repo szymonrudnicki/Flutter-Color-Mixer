@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
-class RGBPreview extends StatefulWidget {
+class RGBPreview extends StatelessWidget {
   @override
-  _RGBPreviewState createState() => _RGBPreviewState();
-}
-
-class _RGBPreviewState extends State<RGBPreview> {
-  @override
-  Widget build(BuildContext context) => Container();
+  Widget build(BuildContext context) => Center(
+          child: Container(
+        width: 300,
+        height: 300,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Color.fromRGBO(11, 7, 28, 1),
+        ),
+      ));
 }
