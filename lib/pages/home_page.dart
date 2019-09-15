@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             RGBSlider(),
-            RGBPreview(),
+            Expanded(child: RGBPreview()),
           ],
         ),
       );
