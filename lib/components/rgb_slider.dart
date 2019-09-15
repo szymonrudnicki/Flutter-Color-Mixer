@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../models/color_model.dart';
 
 class RGBSlider extends StatelessWidget {
   Widget _buildSlider(
@@ -20,24 +23,30 @@ class RGBSlider extends StatelessWidget {
       );
 
   @override
-  Widget build(BuildContext context) => Column(children: [
+  Widget build(BuildContext context) {
+    var color = Provider.of<ColorModel>(context, listen: true);
+
+    return Column(
+      children: [
         _buildSlider(
           label: "red",
           color: Colors.red,
-          value: 0,
-          onChanged: (value) => print(value),
+          value: color.red,
+          onChanged: (value) => color.red = value,
         ),
         _buildSlider(
           label: "green",
           color: Colors.green,
-          value: 0,
-          onChanged: (value) => print(value),
+          value: color.green,
+          onChanged: (value) => color.green = value,
         ),
         _buildSlider(
           label: "blue",
           color: Colors.blue,
-          value: 0,
-          onChanged: (value) => print(value),
+          value: color.blue,
+          onChanged: (value) => color.blue = value,
         ),
-      ]);
+      ],
+    );
+  }
 }
