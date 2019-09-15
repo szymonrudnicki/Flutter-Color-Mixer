@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import '../models/color_model.dart';
@@ -13,6 +14,8 @@ class RGBPreview extends StatelessWidget {
             colorModel.blue.toInt(),
             1,
           );
+
+          var colorInHex = color.value.toRadixString(16);
 
           return Center(
             child: Column(
@@ -40,12 +43,16 @@ class RGBPreview extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          color.value.toRadixString(16),
+                          colorInHex,
                           style: TextStyle(fontSize: 20),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Icon(Icons.content_copy),
+                        GestureDetector(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Icon(Icons.content_copy),
+                          ),
+                          onTap: () =>
+                              _copyColorToClipboard(context, colorInHex),
                         )
                       ],
                     ),
@@ -56,4 +63,11 @@ class RGBPreview extends StatelessWidget {
           );
         },
       );
+
+  void _copyColorToClipboard(BuildContext context, String color) {
+    Clipboard.setData(ClipboardData(text: color));
+    Scaffold.of(context).showSnackBar(SnackBar(
+      content: Text("Color copied to clipboard"),
+    ));
+  }
 }
