@@ -7,10 +7,13 @@ class RGBSlider extends StatelessWidget {
   Widget _buildSlider(
           {String label, Color color, double value, Function onChanged}) =>
       Padding(
-        padding: EdgeInsets.only(bottom: 16),
+        padding: EdgeInsets.only(top: 8, bottom: 8),
         child: Column(
           children: [
-            Text(label),
+            Text(
+              label,
+              style: TextStyle(fontSize: 16),
+            ),
             Slider(
               activeColor: color,
               value: value,
@@ -29,19 +32,19 @@ class RGBSlider extends StatelessWidget {
     return Column(
       children: [
         _buildSlider(
-          label: "red",
+          label: "Red",
           color: Colors.red,
           value: color.red,
           onChanged: (value) => color.red = value,
         ),
         _buildSlider(
-          label: "green",
+          label: "Green",
           color: Colors.green,
           value: color.green,
           onChanged: (value) => color.green = value,
         ),
         _buildSlider(
-          label: "blue",
+          label: "Blue",
           color: Colors.blue,
           value: color.blue,
           onChanged: (value) => color.blue = value,

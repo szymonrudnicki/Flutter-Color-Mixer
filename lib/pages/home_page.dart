@@ -6,6 +6,7 @@ import '../components/rgb_slider.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(title: Text("Color Mixer")),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
